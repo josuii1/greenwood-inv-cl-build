@@ -1,0 +1,119 @@
+.login-page {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.invoice-body-list {
+  display: flex;
+  padding: 1em 1em;
+  justify-content: center;
+}
+
+.show-more-less-clickable {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.create-invoice-form {
+  display: flex;
+  justify-content: center;
+  padding: 1em 3em;
+}
+
+.create-invoice {
+  width: -webkit-fill-available;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-modal-button {
+  margin-left: auto;
+}
+
+.invoice-container {
+  display: flex;
+  justify-content: center;
+  padding: 3em;
+}
+
+.invoice {
+  width: 794px;
+  height: 1123px;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.invoice-header {
+  display: flex;
+  flex-direction: row;
+  width: -webkit-fill-available;
+}
+
+.invoice-logo {
+  width: 150px;
+  height: 150px;
+  margin-right: auto;
+}
+
+.invoice-header-header {
+  display: flex;
+  flex-direction: column;
+  background-color: #5a8c42;
+  color: white;
+  padding: 1em;
+  border-radius: 4px;
+  height: min-content;
+  align-items: flex-end;
+}
+
+.invoice-header-title {
+  font-size: 26px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+.invoice-header-text {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.invoice-info {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  margin: 1em;
+  background: #5a8c42;
+}
+
+.invoice-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  font-size: 20px;
+  margin: 1em;
+  border: 2px solid black;
+  height: -webkit-fill-available;
+}
+
+.invoice-footer {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 28px;
+  padding: 0em 1em;
+}
+
+.print-button-holder {
+  display: flex;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
