@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
+const getToken = () => {
+  return localStorage.getItem("token");
+};
+
 function RegisterNewUser() {
+  const token = getToken();
+
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -23,13 +29,17 @@ function RegisterNewUser() {
 
       console.log("Sending data:", dataToSend); // Log the data being sent
 
-      const response = await fetch("/register/newuser", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataToSend),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER}/register/newuser`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
 
       console.log("Response:", response); // Log the response
 

@@ -3,8 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
-// Inside your component
-
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +12,7 @@ function LoginForm() {
 
   async function loginUser(username, password) {
     try {
-      const response = await axios.post("https://greenwoodlm-inv-server-nrdel.ondigitalocean.app/login", { username, password });
+      const response = await axios.post(`${process.env.REACT_APP_API_SERVER}/login`, { username, password });
 
       // Assuming the server returns a token on successful login
       const { token } = response.data;

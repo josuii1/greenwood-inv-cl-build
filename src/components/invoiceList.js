@@ -17,7 +17,7 @@ function InvoiceList() {
   }
 
   useEffect(() => {
-    fetch("https://greenwoodlm-inv-server-nrdel.ondigitalocean.app/invoices", {
+    fetch(`${process.env.REACT_APP_API_SERVER}/invoices`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

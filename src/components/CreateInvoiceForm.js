@@ -2,12 +2,20 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+const getToken = () => {
+  return localStorage.getItem("token");
+};
+
 function CreateInvoiceForm() {
   //get current invoice number
   const [nextInvoiceNumber, setNextInvoiceNumber] = useState(0); // State for response message
+  const token = getToken();
 
   useEffect(() => {
-    fetch("/invoices/create/currentnumber", {})
+    fetch(
+      `${process.env.REACT_APP_API_SERVER}/invoices/create/currentnumber`,
+      {}
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -57,13 +65,17 @@ function CreateInvoiceForm() {
 
       console.log("Sending data:", dataToSend); // Log the data being sent
 
-      const response = await fetch("/invoices/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataToSend),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER}/invoices/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
 
       console.log("Response:", response); // Log the response
 
@@ -139,7 +151,11 @@ function CreateInvoiceForm() {
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit" className="invoice-modal-button">
+        <Button
+          variant="primary"
+          type="submit"
+          className="invoice-modal-button"
+        >
           Submit
         </Button>
       </Form>

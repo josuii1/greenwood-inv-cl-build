@@ -13,11 +13,14 @@ const PrivateRoute = () => {
   useEffect(() => {
     const authenticateSession = async () => {
       try {
-        const response = await fetch("https://greenwoodlm-inv-server-nrdel.ondigitalocean.app/authenticatesession", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_SERVER}/authenticatesession`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

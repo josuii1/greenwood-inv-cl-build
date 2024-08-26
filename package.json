@@ -1,12 +1,12 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "https://greenwoodlm-inv-server-nrdel.ondigitalocean.app/",
   "private": true,
   "start_url": "/greenwood-invoicing-client",
   "dependencies": {
     "axios": "^1.7.4",
     "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.5",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "react": "^18.3.1",

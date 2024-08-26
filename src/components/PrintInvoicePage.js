@@ -10,13 +10,14 @@ function PrintInvoicePage({ invoiceId }) {
   const token = localStorage.getItem("token");
   const params = useParams();
   const invoiceNumber = params.invoiceNumber;
+  console.log(invoiceNumber)
 
   const [detailInvoice, setDetailInvoice] = useState(null);
 
   useEffect(() => {
     const fetchInvoiceDetails = async () => {
       try {
-        const response = await fetch(`/invoices/details/${invoiceNumber}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_SERVER}/invoices/details/${invoiceNumber}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

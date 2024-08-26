@@ -13,11 +13,14 @@ const InvoiceModal = ({ invoiceId }) => {
 
   const openModal = async () => {
     try {
-      const response = await fetch(`/invoices/details/${invoiceId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER}/invoices/details/${invoiceId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -80,13 +83,17 @@ const InvoiceModal = ({ invoiceId }) => {
 
       console.log("Sending data:", dataToSend); // Log the data being sent
 
-      const response = await fetch(`invoices/update/${invoiceId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataToSend),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER}/invoices/update/${invoiceId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
 
       if (response.ok) {
         const result = await response.json();
