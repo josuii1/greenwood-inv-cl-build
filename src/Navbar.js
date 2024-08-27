@@ -13,7 +13,7 @@ function NavigationBar() {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-body-tertiary .no-print">
         <Container>
           <Navbar.Brand href="/">
             <img

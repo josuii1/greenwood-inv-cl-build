@@ -10,18 +10,21 @@ function PrintInvoicePage({ invoiceId }) {
   const token = localStorage.getItem("token");
   const params = useParams();
   const invoiceNumber = params.invoiceNumber;
-  console.log(invoiceNumber)
+  console.log(invoiceNumber);
 
   const [detailInvoice, setDetailInvoice] = useState(null);
 
   useEffect(() => {
     const fetchInvoiceDetails = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_SERVER}/invoices/details/${invoiceNumber}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_SERVER}/invoices/details/${invoiceNumber}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error(`Failed to fetch invoice: ${response.statusText}`);
@@ -88,26 +91,7 @@ function PrintInvoicePage({ invoiceId }) {
   }
 
   function PrintElem() {
-    var mywindow = window.open("", "PRINT", "height=1123,width=794");
-
-    mywindow.document.write("<html><head><title>" + document.title);
-    mywindow.document.write("</title>");
-    mywindow.document.write("<style>");
-    mywindow.document.write(
-      ".invoice {width: 794px; height: 1000px;background-color: rgb(255, 255, 255);border: 2px solid black;display: flex;flex-direction: column;padding: 2em;}.invoice-header {display: flex;flex-direction: row;width: -webkit-fill-available;}.invoice-logo {width: 150px;height: 150px;margin-right: auto;}.invoice-header-header {display: flex;flex-direction: column;background-color: #5a8c42;color: white;padding: 1em;border-radius: 4px;height: min-content;align-items: flex-end;}.invoice-header-title {font-size: 26px;font-weight: 600;text-transform: uppercase;line-height: 2;}.invoice-header-text {font-size: 22px;font-weight: 600;}.invoice-info {display: flex;flex-direction: column;padding: 1em;font-size: 20px;font-weight: 500;color: white;margin: 1em;background: #5a8c42;}.invoice-body {display: flex;flex-direction: column;padding: 1em;font-size: 20px;margin: 1em;border: 2px solid black;height: -webkit-fill-available;}"
-    );
-
-    mywindow.document.write("</style>");
-    mywindow.document.write("</head><body >");
-    mywindow.document.write(
-      document.getElementById("printInvoiceContainer").innerHTML
-    );
-    mywindow.document.write("</body></html>");
-
-    mywindow.document.close(); // necessary for IE >= 10
-    mywindow.focus(); // necessary for IE >= 10*/
-
-    return true;
+    window.print()
   }
 
   return (
@@ -161,7 +145,7 @@ function PrintInvoicePage({ invoiceId }) {
         </div>
       </div>
       <div className="print-button-holder">
-        <Button onClick={printDivAsPDF} variant="success" size="lg">
+        <Button onClick={PrintElem} variant="success" size="lg">
           PRINT
         </Button>
       </div>

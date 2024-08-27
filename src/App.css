@@ -40,7 +40,7 @@
 
 .invoice {
   width: 794px;
-  height: 1123px;
+  height: 980px;
   background-color: rgb(255, 255, 255);
   border: 2px solid black;
   display: flex;
@@ -116,4 +116,25 @@
   position: fixed;
   bottom: 50px;
   right: 50px;
+}
+
+@media print
+{    
+  .navbar {
+    display: none!important;
+  }
+    
+  .invoice-container {
+    padding: 0;
+  }
+
+  .print-button-holder {
+    display: none;
+  }
+
+  .invoice {
+    height: 980px;
+    padding: 0em;
+    border: none;
+  }
 }
