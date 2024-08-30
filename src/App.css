@@ -124,6 +124,11 @@
     display: none!important;
   }
     
+  .invoice-header {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
   .invoice-container {
     padding: 0;
   }
