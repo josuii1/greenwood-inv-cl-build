@@ -105,7 +105,7 @@ function PrintInvoicePage({ invoiceId }) {
                 className="invoice-header-title"
                 style={{ fontWeight: 600 }}
               >
-                Greenwood Landscape Maintenacne
+                Greenwood Landscape Maintenance
               </span>
               <span className="invoice-header-text">
                 Hugo Ramirez (503)-508-4845
