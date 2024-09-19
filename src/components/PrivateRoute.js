@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
+import logo from "./logo.png";
 
 // Function to get the token from localStorage (or wherever you store it)
 const getToken = () => {
@@ -29,7 +31,6 @@ const PrivateRoute = () => {
         const data = await response.json();
         if (data.validated === 1) {
           setVerifiedToken(true);
-          console.log("Validation response:", data.validated);
         } else {
           setVerifiedToken(false);
         }
@@ -44,7 +45,15 @@ const PrivateRoute = () => {
 
   // Show a loading state while the authentication check is in progress
   if (verifiedToken === null) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh"}}>
+          <img
+            alt=""
+            src={logo}
+            className="loading-indicator"
+          />
+      </div>
+    );
   }
 
   return verifiedToken ? <Outlet /> : <Navigate to="/login" />;
